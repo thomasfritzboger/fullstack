@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>The Window Object</h1>
+<h2>The prompt() Method</h2>
+
+<p>Click the button to demonstrate the prompt box.</p>
+
+<button onclick="processUserInput(nameLength)">Enter your name</button>
+
+<p id="demo"></p>
+
+<script>
+    function greeting(name) {
+        console.log(`Hello, ${name}!`);
+        document.getElementById("demo").innerHTML =
+            "Hello " + name + "! How are you today?";
+    }
+
+    const greetingUpper = (name) => {
+        const upperCasedName = name.toUpperCase()
+        console.log(`Hello, ${upperCasedName}!`);
+        document.getElementById("demo").innerHTML =
+            "Hello " + upperCasedName + "! How are you today?";
+    }
+
+    const nameLength = (name) => {
+        const length = name.length;
+        console.log(`Hello ${name}, your name is ${length} characters long!`);
+        document.getElementById("demo").innerHTML =
+            "Hello " + name + "! your name is "+ length + " characters long!";
+
+    }
+
+    function processUserInput(callback) {
+        var name = prompt('Please enter your name:');
+        callback(name);
+    }
+
+
+
+</script>
+</body>
+</html>
