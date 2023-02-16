@@ -114,12 +114,25 @@ function getWeather(coords) {
     });
 }
 
+
+// const wx = async () => {
+//     try {
+//         const coords = await getLocation();
+//         const weather = await getWeather(coords);
+//         document.getElementById('weather').innerHTML = weather.main.temp;
+//         document.getElementById('weather').innerHTML = weather.main.temp + ' ' + weather.weather[0].description;
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
+
+
+
 (async () => {
     try {
         const coords = await getLocation();
         const weather = await getWeather(coords);
-        document.getElementById('weather').innerHTML = weather.main.temp;
-        document.getElementById('weather').innerHTML = weather.main.temp + ' ' + weather.weather[0].description;
+        document.getElementById('weather').innerHTML = weather.main.temp + ' Kelvin,' + ' ' + weather.weather[0].description;
     } catch (e) {
         console.log(e);
     }

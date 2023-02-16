@@ -29,11 +29,12 @@ function calculate(x, y, operation) {
     });
 }
 
-// const res = calculate(3, 3, divide)
+// const res = calculate(3, 6, divide)
 //     .then(result => {
 //         console.log(`The result is: ${result}`);
 //     })
 //     .catch(error => console.error(error.message));
+
 
 // console.log(calculate(4, 6, add));
 // console.log(calculate(5,7,multiply))
