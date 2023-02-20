@@ -9,7 +9,6 @@ export class Person {
         this.age = age;
         this.occupation = occupation
         this.salary = salary
-
     }
 
     introduce(): string  {
@@ -27,12 +26,10 @@ export class Person {
     getSalary(): number {
         return this.salary
     }
-
 }
 
  const me = new Person("Thomas",54, "Student")
  console.log(me.introduce())
-
  console.log(me.age);
  me.incrementAge()
  console.log(me.age);

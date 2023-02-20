@@ -1,7 +1,6 @@
-
 import {Person} from "./Person";
 
-export async function renderPeopleList(people: Person[], container: HTMLDivElement) {
+export function renderPeopleList(people: Person[], container: HTMLDivElement) {
     container.innerHTML = ""
 
     people.forEach((person: Person) => {

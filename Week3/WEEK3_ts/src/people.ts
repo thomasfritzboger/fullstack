@@ -1,7 +1,5 @@
-
 import data from './people.json';
 import { Person } from './Person';
-
 
 export function getPeople(): Promise<Person[]> {
     const people: Person[] = [];
