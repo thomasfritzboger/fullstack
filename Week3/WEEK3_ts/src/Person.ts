@@ -16,11 +16,11 @@ export class Person {
         return `Hello, my name is ${this.name} and I am a ${this.occupation}. I earn ${this.salary}$`
     }
 
-    incrementAge() {
+    incrementAge(): void {
         this.age++;
     }
 
-    setSalary(salary: number) {
+    setSalary(salary: number): void {
         this.salary = salary;
     }
 
@@ -30,14 +30,13 @@ export class Person {
 
 }
 
-// const me = new Person("Thomas",54, "Student")
-// console.log(me.introduce())
-//
-// document.getElementById("root")!.innerHTML = me.name
-// console.log(me.age);
-// me.incrementAge()
-// console.log(me.age);
-// me.setSalary(1000)
-// console.log(me.getSalary())
-// console.log(me.introduce())
+ const me = new Person("Thomas",54, "Student")
+ console.log(me.introduce())
+
+ console.log(me.age);
+ me.incrementAge()
+ console.log(me.age);
+ me.setSalary(1000)
+ console.log(me.getSalary())
+ console.log(me.introduce())
 
