@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Person = void 0;
-class PersonModel {
+class Person {
     constructor(name, age, occupation, salary = 0) {
         this.name = name;
         this.age = age;
@@ -21,8 +21,8 @@ class PersonModel {
         return this.salary;
     }
 }
-exports.Person = PersonModel;
-// const me = new PersonModel("Thomas",54, "Student")
+exports.Person = Person;
+// const me = new Person("Thomas",54, "Student")
 // console.log(me.introduce())
 //
 // document.getElementById("root")!.innerHTML = me.name

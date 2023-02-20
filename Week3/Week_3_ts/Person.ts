@@ -1,4 +1,4 @@
-export class PersonModel {
+export class Person {
     public name: string;
     public age: number;
     public occupation: string
@@ -30,7 +30,7 @@ export class PersonModel {
 
 }
 
-// const me = new PersonModel("Thomas",54, "Student")
+// const me = new Person("Thomas",54, "Student")
 // console.log(me.introduce())
 //
 // document.getElementById("root")!.innerHTML = me.name
