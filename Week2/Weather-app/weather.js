@@ -100,7 +100,7 @@ function getLocation() {
 function getWeather(coords) {
     return new Promise((resolve, reject) => {
         try {
-            const apiKey = "e6c207da88037cc9b4b0871adf24b6d1";
+            const apiKey = "SÆT NØGLE HER";
             const url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coords.latitude + '&lon=' + coords.longitude + '&apiKey=' + apiKey;
             const req = new XMLHttpRequest();
             req.open("GET", url);
