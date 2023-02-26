@@ -2,7 +2,7 @@
   "person": [
     {
       "id": 1,
-      "name": "Ane",
+      "name": "Jane",
       "age": 10,
       "city": "Frederikssund"
     },
@@ -163,22 +163,16 @@
       "city": "Seattle"
     },
     {
-      "id": 28,
-      "name": "Susan",
-      "age": 40,
-      "city": "Boston"
+      "id": 31,
+      "name": "Henny",
+      "age": 55,
+      "city": "Ikast"
     },
     {
-      "id": 29,
-      "name": "Alex",
-      "age": 29,
-      "city": "Amager"
-    },
-    {
-      "id": 30,
-      "name": "Frede",
-      "age": 33,
-      "city": "Gundestrup"
+      "id": 32,
+      "name": "Rolf",
+      "age": 44,
+      "city": "KKK"
     }
   ]
 }

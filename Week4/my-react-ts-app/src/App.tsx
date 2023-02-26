@@ -55,6 +55,7 @@ function App() {
 
             <RemoveLastPersonButton people={people} setPeople={setPeople}/>
             <SortByAgeButton people={people} setPeople={setPeople}/>
+            <SortByIdButton people={people} setPeople={setPeople}/>
             <AddPersonForm people={people} setPeople={setPeople}/>
         </div>
     )
@@ -79,9 +80,23 @@ const OutputText = ({someText}:{someText:string}) => {
 }
 
 const AddNewPersonButton = ({people,setPeople}:{people:Person[],setPeople: React.Dispatch<React.SetStateAction<Person[]>>}) => {
+
+          const handleClick =  (event: React.MouseEvent<HTMLButtonElement>):void => {
+
+                 const newPerson = new Person(people.length+1,"New Person",people.length+1,"Andeby")
+
+                 const options = makeOptions("POST", newPerson);
+                 fetch("http://localhost:3008/person", options)
+                 people.push(newPerson)
+                 setPeople([...people])
+          }
+
     if (people.length > 0) {
-        const newPerson = new Person(people[people.length-1].id+1,"New Person",people.length+1,"Andeby")
-        return <button onClick={()=>setPeople([...people,newPerson])} > Add person</button>
+
+
+        return <button onClick={handleClick} > Add person</button>
+
+
     } else {
         return <button onClick={()=>setPeople([...people])} > Add person</button>
     }
@@ -97,8 +112,6 @@ const RemoveLastPersonButton = ({people, setPeople}:{people:Person[], setPeople:
             return fetch("http://localhost:3008/person/"+people[people.length-1].id, options)
                 .then(handleHttpErrors)
                 .then((data) => setPeople( people.slice(0,people.length-1)));
-
-
         }
 
     } >Remove last Person in list</button>
@@ -111,6 +124,15 @@ const SortByAgeButton = ({people, setPeople}:{people:Person[], setPeople: React.
             setPeople([...people] )
         }
     }>Sort by age</button>
+}
+
+const SortByIdButton = ({people, setPeople}:{people:Person[], setPeople: React.Dispatch<React.SetStateAction<Person[]>>}) => {
+    return <button onClick={
+        () => {
+            people.sort((a,b) => a.id - b.id)
+            setPeople([...people] )
+        }
+    }>Sort by Id</button>
 }
 
 const PeopleViewer = ({people,setPerson}:{people:Person[],setPerson: Function} ) => {
