@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+require("dotenv").config()
 import morgan from 'morgan';
 import { readFileSync, writeFileSync } from 'node:fs';
 //import { v4 as uuidv4 } from 'uuid';
@@ -132,4 +133,5 @@ app.patch('/api/people/:id', (req: Request, res: Response): void => {
     res.json(people);
   });
   
-app.listen(3001,() => {console.log(`server is listening to port 3001`)})
+const PORT = process.env.PORT
+app.listen(PORT,() => {console.log(`server is listening to port 3001`)})
