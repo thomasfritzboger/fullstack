@@ -78,8 +78,10 @@ export const getAllCars = async (req: Request, res: Response) => {
   }
 
   export const deleteCar = async(req: Request, res: Response) => {
-   await Car.findByIdAndDelete(req.params.id)
+    await Car.findByIdAndDelete(req.params.id)
     res.status(204).json({
-      message: 'Car successfully deleted'
+        message: 'Car successfully deleted'
     });
 }
+
+
