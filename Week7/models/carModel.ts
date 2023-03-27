@@ -1,4 +1,5 @@
 import mongoose = require('mongoose');
+import Review from './reviewModel';
 
 const carSchema = new mongoose.Schema({ 
     model: {
@@ -13,8 +14,9 @@ const carSchema = new mongoose.Schema({
     color: {
         type: String,
         enum: ['Black','White'],
-        message:'The color must be Black or White' 
+        message:'The color must be Black or White'
     },
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
     createdAt:{
         type: Date,
         default: Date.now
