@@ -2,6 +2,11 @@ import { NextFunction, Request, Response } from 'express';
 import catchAsync from '../utilities/catchAsync';
 import Car from "../models/carModel"
 import Review from '../models/reviewModel';
+import validator from 'validator';
+
+interface Review {
+  comment: String
+}
 
 interface Car {
   id: string,
@@ -9,11 +14,10 @@ interface Car {
   year: number,
   price: number,
   color: string,
+  reviews:Review[]
 
   [key : string] : any
 }
-
-
 
 
 export const getAllCars = async (req: Request, res: Response, next:NextFunction) => {
@@ -24,7 +28,6 @@ export const getAllCars = async (req: Request, res: Response, next:NextFunction)
       cars
     })
 }
-
 
 export const getCarById = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
 
@@ -73,8 +76,11 @@ export const createCarReview = catchAsync(async (req:Request, res:Response, next
       message: 'No such car'
     });
   }
+  const comment = req.body.comment;
   const review = new Review({"comment": req.body.comment});
+
   await review.save();
+
   car.reviews.push(review);
   await car.save();
   res.status(201).json({
@@ -82,4 +88,14 @@ export const createCarReview = catchAsync(async (req:Request, res:Response, next
   })
 })
 
-
+export const getAllReviewsByCarId = catchAsync(async (req:Request, res:Response, next:NextFunction) => {
+  const car:Car | null = await Car.findById(req.params.id).populate('reviews');
+  if (!car) {
+    return res.status(404).json({
+      message: 'No such car'
+    });
+  }
+  res.status(200).json({
+      data: car.reviews.map(review => review.comment)
+    });
+});

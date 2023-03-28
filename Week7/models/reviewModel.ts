@@ -1,11 +1,12 @@
 import mongoose = require('mongoose');
+import validator from 'validator';
 
 const reviewSchema = new mongoose.Schema({
     comment: {
       type: String,
-      required: [true, 'You are required to enter a comment'],
-      maxLength: [200, 'A comment type must not exceed 200 characters'],
-      minLength: [10, 'A comment must be at least 10 characters']
+      required: true,
+      maxLength: 200,
+      minLength: 10
     },
     createdAt: {
       type: Date,
@@ -13,6 +14,16 @@ const reviewSchema = new mongoose.Schema({
     }
   }
 );
+
+reviewSchema.pre('save', async function(next){
+  if (validator.contains(this.comment, "lort")) {
+    next(new Error('bandeord is not ok'))
+  }
+  else {
+    this.comment = this.comment.toLowerCase()
+    next()
+  }
+});
 
 const Review = mongoose.model('Review', reviewSchema);
 
