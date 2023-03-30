@@ -2,8 +2,7 @@ import app from "./app";
 import * as dotenv from 'dotenv'
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { getAllPeople} from "./controllers/personController";
-import routes from "./routes/personRoutes";
+
 import Person from "./models/personModel";
 
 
@@ -29,9 +28,9 @@ mongoose.connect(DB, {
 // that together define the "shape" of queries that are executed against
 // your data.
 
-const people = await Person.find({},"name age")
+const people = await Person.find({},"name age city")
 //const people2= Person.find({},"name")
-export const typeDefs = `#graphql
+export const typeDefs = `#graphql 
   type Query {
     hello: String
     users: [User]!

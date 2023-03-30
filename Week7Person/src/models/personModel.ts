@@ -21,6 +21,4 @@ const peopleSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person',peopleSchema);
 
-
-
 export default Person

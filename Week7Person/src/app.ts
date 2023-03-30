@@ -53,7 +53,6 @@ console.log(`🚀 Server ready at http://localhost:4000/`);
 //
 import morgan from 'morgan';
 // import logger from "./utility/logger";
-import routes from "./routes/personRoutes";
 //
 //
 //const app = express();
@@ -66,7 +65,6 @@ app.use(express.json()); // Body parser for JSON data
 app.use(express.static(`${__dirname}/public`)); // Serve static files
 
 
-app.use("/api/v1/people", routes );
 
 
 export default app;
