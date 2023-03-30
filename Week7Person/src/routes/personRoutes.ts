@@ -1,5 +1,5 @@
 import { getAllPeople, createAPerson, getPersonById, deletePerson , updatePerson} from "../controllers/personController";
-import express = require('express')
+import express from 'express'
 
 const routes = express.Router()
 
