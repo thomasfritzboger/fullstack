@@ -1,24 +1,28 @@
-import mongoose from 'mongoose';
+import mongoose , {Schema, Document} from 'mongoose';
 
-const peopleSchema = new mongoose.Schema({
+export interface IPerson extends Document {
+    name: string;
+    age: number;
+    addresses?: [string]
+}
+
+const peopleSchema: Schema = new Schema({
     name: {
         type: String,
         required: [true, 'You are required to enter a name'],
-        maxLength: [40, 'A name must not exceed 40 characters'],
-        minLength: [5, 'A name must be at least 5 characters']
+        maxLength: 40,
+        minLength: 5
     },
     age: Number,
-    city: {
-        type: String,
-        enum: ['Lyngby','Holte','Virum'],
-        message:'The city must be Lyngby, Holte or Virum'
-    },
     createdAt:{
         type: Date,
         default: Date.now
-    }
+    },
+    addresses: [{ type: Schema.Types.ObjectId, ref: 'Address', required: true }]
 });
 
-const Person = mongoose.model('Person',peopleSchema);
+export default mongoose.model<IPerson>('Person',peopleSchema);
 
-export default Person
+
+
+

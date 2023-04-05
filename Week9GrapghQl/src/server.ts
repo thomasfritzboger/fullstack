@@ -1,6 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import typeDefs from './scema';
+import typeDefs from './schema';
 import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 
