@@ -45,23 +45,32 @@ export default () => {
 
     return (
         <>
-            <h2>Add person to an address</h2>
+            <h3>Add person to an address</h3>
             <form onSubmit={onSubmit}>
                 <FormControl sx={{m:1, minWidth:120}}>
-                    <h3>Select Person</h3>
-                    <Select labelId="person-select" name="personId" onChange={onChange}>
-                        {personQuery.data.people.map((person:Person)=>
-                            <MenuItem key={person.id} value={person.id}>
-                                {person.name}
-                            </MenuItem>)}
-                    </Select>
-                    <h3>Select Address</h3>
-                    <Select labelId="address-select" name="addressId" onChange={onChange}>
-                        {addressQuery.data.addresses.map((address:Address)=>
-                            <MenuItem key={address.id} value={address.id}>
-                                {address.street}
-                            </MenuItem>)}
-                    </Select>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div style={{ marginRight: '1rem', minWidth: '200px' }}>
+                            <h3>Select Person</h3>
+                            <Select labelId="person-select" name="personId" onChange={onChange} style={{ width: '100%' }}>
+                                {personQuery.data.people.map((person:Person)=>
+                                    <MenuItem key={person.id} value={person.id}>
+                                        {person.name}
+                                    </MenuItem>
+                                )}
+                            </Select>
+                        </div>
+                        <div style={{ minWidth: '200px' }}>
+                            <h3>Select Address</h3>
+                            <Select labelId="address-select" name="addressId" onChange={onChange} style={{ width: '100%' }}>
+                                {addressQuery.data.addresses.map((address:Address)=>
+                                    <MenuItem key={address.id} value={address.id}>
+                                        {address.street}
+                                    </MenuItem>
+                                )}
+                            </Select>
+                        </div>
+                    </div>
+
                     <input type="submit" value="Submit"/>
                 </FormControl>
             </form>

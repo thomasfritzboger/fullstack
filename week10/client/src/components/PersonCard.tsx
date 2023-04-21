@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,8 +8,11 @@ import {useMutation} from "@apollo/client";
 import DELETE_PERSON from "../mutations/DeletePerson";
 import GET_PEOPLE from "../queries/GetPeople";
 import GET_ADDRESS from "../queries/GetAddress";
+import {UserContext} from "../context/UserContext";
 
 export default ({person}:{person:Person}) => {
+    const {user} = useContext(UserContext);
+
     function DeletePerson( {personId}:{personId: String}) {
         const [deletePerson] = useMutation(DELETE_PERSON, {
             variables: { deletePersonId: personId },
@@ -39,7 +42,7 @@ export default ({person}:{person:Person}) => {
                     <Typography gutterBottom variant="h6" component="div">
                         {person.age}
                     </Typography>
-                    <DeletePerson personId={person.id} />
+                    {user.isLoggedIn && user.roles.includes("admin") && <DeletePerson personId={person.id} />}
                 </CardContent>
             </Card>
         </div>

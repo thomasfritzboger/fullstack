@@ -25,4 +25,11 @@ type Theme = {
     }
 }
 
-export type {Person, Address,Theme};
+type User = {
+    isLoggedIn:boolean;
+    roles:string[];
+    name:string;
+
+}
+
+export type {Person, Address,Theme, User};
