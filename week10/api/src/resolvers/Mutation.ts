@@ -52,7 +52,6 @@ export default {
         await Person.findByIdAndDelete(id);
         return {
             id:id,
-            _id:id
         };
     }
 }

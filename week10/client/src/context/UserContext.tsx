@@ -13,7 +13,7 @@ setUser: React.Dispatch<React.SetStateAction<User>>}>({
 export default function UserContextProvider(props:{children:JSX.Element}) {
     const [user,setUser] = useState<User>({
         isLoggedIn:false,
-        roles:["admin", "dummy"],
+        roles:["admin", "superuser"],
         name:""
 
     });
